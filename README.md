@@ -1,17 +1,23 @@
 # RL-and-Deep-RL-Topics
 This repository will have all the explanations and the intuition behind different RL and Deep RL Algorithms
 
+##### Replay Buffer:
+replay buffer to sample out experiences from Episodes to remove out any correlations that are induced by a temporally related data and to make the data for the Neural networks to be IID.
+
+#### DQN: Deep Q-Network
+--> This is essentially Q-Learning with Deep Learning, also uses a Replay Buffer
+
 #### DPG: Deterministic Policy Gradient
-DPG 
+DPG can be used for Continuous action and state space but the problem is that it is very unstable and may not always converge which is really not useful for practical robotic applications
 
 
 
 #### DDPG: Deep Deterministic Policy Gradient
 --> DDPG is essentially a deterministic policy gradient algorithm where the policy gradient is calculated using neural networks as the function approximators, hence the name Deep Deterministic Policy Gradient. 
---> The Critic in DDPG is essentially a DQN(Deep Q Network)
---> The actor(Policy Gradient)
+--> The Critic in DDPG is essentially a DQN(Deep Q Network) which pre-processes 
+--> The actor(Policy Gradient) 
 --> Both DPG and DDPG can handle continuous State space and Continuous action space, but DPG is unstable and DDPG is stable(i.e the value (Q-value) converges)
---> 
+--> Target networks are used to avoid divergence in the "Q -value" since the same network will be used both for updating the Q- value and also to preprocess for action(a), hence the problem is avoided using a different network with same initial weights and then slowly updating them using soft updates(averaging method) such that stability is ensured. The weights update for the target networks is constrained to be very slower than the actual critic and actor networks.
 --> Without HER, DDPG either requires an established reward function and cannot work with Sparse and Binary Rewards or the sample complexity is really very large. (low sample efficiency)
 
 #### HER : HindSight Experience Replay.
