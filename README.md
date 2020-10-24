@@ -46,18 +46,18 @@ So a single model can be initialized once (with mjModel) and can be used concurr
 sim = MjSim(Model) # Class in Mujoco_py and a object is created from which we access the different data variables and methods such as the joint positions etc... as required and explained below.
 
 
-* **State vector in Mujoco:
+* **State vector in Mujoco:**
   * """
 x = (mjData.time, mjData.qpos, mjData.qvel, mjData.act) (Taken from Official Mujoco Documentation)
-**mjData.act -- Activation states for certain actuators.** 
+ * **mjData.act -- Activation states for certain actuators.** 
 """
 * q - Joint space, x - Cartesian Space
-* **qpos = Joint positions
-  * Accessed in mj_py as as **sim.data.qpos
-* **qvels = Joint Velocities
-  * Accessed in mj_py as as **sim.data.qvels
+* **qpos = Joint positions**
+  * Accessed in mj_py as as **sim.data.qpos**
+* **qvels = Joint Velocities**
+  * Accessed in mj_py as as **sim.data.qvels**
 
-* **Control Vector in Mujoco:
+* **Control Vector in Mujoco:**
   * """
 u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official Mujoco Documentation)"""
   * **mjData.ctrl**         - Control Signals gievn to the actuators modeled as a part of the model XML.
@@ -75,6 +75,6 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
                          'actuator',
                          'sensor',
                          'tendon',
-                         'mesh']
+                         'mesh']**
 * We have tuples namely such as body_names, geom_names, site_names, light_names and so on and we also have the same for actuators, tendons and meshes too.
 * and then we also have dictionaries of body_name2id, body_id2name, goem_name2id, geom_id2name which allocate unique indices for each body and its geometry defined in an Mujoco Format XML model of the robot.
