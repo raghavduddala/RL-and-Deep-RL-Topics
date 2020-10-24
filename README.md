@@ -35,6 +35,7 @@ Words in Quote from the article: https://towardsdatascience.com/reinforcement-le
 
 ### Mujoco and Mujoco-py Explanation:
 
+mjModel and mjData both are data strcutures created for modeling Mujoco Simulations
 
 mjModel: It is a constant and does not change once initialized with a certain Mujoco XML Document. Memory allocation is done only while initializing the model. 
 
@@ -42,7 +43,16 @@ mjData: A scratchpad that can be used to write inputs and extract outputs, works
 So a single model can be initialized once (with mjModel) and can be used concurrently with many user implementations(mjData// for example, different RL Implementations for a given task) with multi-threading option. Memory Stacks have been provided for storing anything that needs to be logged and changes dynamically.
 
 
-Acccording to mujoco_py wrappers, we have several object types(these are present in Mujoco:
+#### State vector in Mujoco:
+* """
+x = (mjData.time, mjData.qpos, mjData.qvel, mjData.act) (Taken from Official Mujoco Documentation)
+"""
+* q - Joint space, x - Cartesian Space
+* qpos = Joint positions
+* qvels = Joint Velocities
+
+
+* Acccording to mujoco_py wrappers, we have several object types(these are present in Mujoco:
              obj_types = ['body',
                          'joint',
                          'geom',
@@ -53,5 +63,5 @@ Acccording to mujoco_py wrappers, we have several object types(these are present
                          'sensor',
                          'tendon',
                          'mesh']
-We have tuples namely such as body_names, geom_names, site_names, light_names and so on and we also have the same for actuators, tendons and meshes too.
-and then we also have dictionaries of body_name2id, body_id2name, goem_name2id, geom_id2name which allocate unique indices for each body and its geometry defined in an Mujoco Format XML model of the robot.
+* We have tuples namely such as body_names, geom_names, site_names, light_names and so on and we also have the same for actuators, tendons and meshes too.
+* and then we also have dictionaries of body_name2id, body_id2name, goem_name2id, geom_id2name which allocate unique indices for each body and its geometry defined in an Mujoco Format XML model of the robot.
