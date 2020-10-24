@@ -67,6 +67,9 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
     * Accessed in mj_py as **sim.data.ctrl** Since it wrpas both the classes from mujoco
   * **mjData.qfrc_applied** - Force applied in Joint Space
   * **mjData.xfrc_applied** - Force applied in Cartesian Space
+  * **sim.data.ctrl**: to be used to initialize the control for the robot only if the actuator is modeled and attached to the joint in the mujoco format XML.
+  * or else torques can be applied directly using the **sim.data.qfrc_applied** 
+
 
 * Acccording to mujoco_py wrappers, we have several object types(these are present in Mujoco:
              **obj_types = ['body',
@@ -81,3 +84,8 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
                          'mesh']**
 * We have tuples namely such as body_names, geom_names, site_names, light_names and so on and we also have the same for actuators, tendons and meshes too.
 * and then we also have dictionaries of body_name2id, body_id2name, goem_name2id, geom_id2name which allocate unique indices for each body and its geometry defined in an Mujoco Format XML model of the robot.
+* **sim.model.body_name2id** 
+* **sim.model.geom_name2id**
+
+* **sim.data.get_joint_qpos** 
+
