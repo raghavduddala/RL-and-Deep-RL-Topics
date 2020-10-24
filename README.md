@@ -30,3 +30,28 @@ DPG can be used for Continuous action and state space but the problem is that it
 --> Because of the above changes and additional data from HER  it has the following effect: 
 "At first, the agent will be able to reach states in a relatively small area around the initial state, but gradually it expands this reachable area of the state space until finally it learns to reach those goal states we are actually interested in."
 Words in Quote from the article: https://towardsdatascience.com/reinforcement-learning-with-hindsight-experience-replay-1fee5704f2f8
+
+
+
+### Mujoco and Mujoco-py Explanation:
+
+
+mjModel: It is a constant and does not change once initialized with a certain Mujoco XML Document.
+
+mjData: A scratchpad that can be used to write inputs and extract outputs, works with dynamically varying variables and all the functions are implemented using this. 
+So a singke model can be initialized once (with mjModel) and can be used concurrently with many user implementations(mjData// for example, different RL Implementations for a given task) with multi-threading option.
+
+
+Acccording to mujoco_py wrappers, we have several object types(these are present in Mujoco:
+             obj_types = ['body',
+                         'joint',
+                         'geom',
+                         'site',
+                         'light',
+                         'camera',
+                         'actuator',
+                         'sensor',
+                         'tendon',
+                         'mesh']
+We have tuples namely such as body_names, geom_names, site_names, light_names and so on and we also have the same for actuators, tendons and meshes too.
+and then we also have dictionaries of body_name2id, body_id2name, goem_name2id, geom_id2name which allocate unique indices for each body and its geometry defined in an Mujoco Format XML model of the robot.
