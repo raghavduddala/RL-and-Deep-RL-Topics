@@ -36,14 +36,17 @@ Words in Quote from the article: https://towardsdatascience.com/reinforcement-le
 ### Mujoco and Mujoco-py Explanation:
 *** I have used shorthand descriptor for mujoco_py as mj_py ***
 
-mjModel and mjData both are data strcutures created for modeling Mujoco Simulations
+* **mjModel and mjData** both are **"struct type"** data strcutures created for modeling Mujoco Simulations
+These mjModel and mjData structs are defined in the respective **mjModel.h & mjData.h** header files of the Mujoco Library.
 
-mjModel: It is a constant and does not change once initialized with a certain Mujoco XML Document. Memory allocation is done only while initializing the model. 
+**mjModel**: It is a constant and does not change once initialized with a certain Mujoco XML Document. Memory allocation is done only while initializing the model. 
 
-mjData: A scratchpad that can be used to write inputs and extract outputs, works with dynamically varying variables and all the functions are implemented using this. 
+**mjData**: A scratchpad that can be used to write inputs and extract outputs, works with dynamically varying variables and all the functions are implemented using this. 
 So a single model can be initialized once (with mjModel) and can be used concurrently with many user implementations(mjData// for example, different RL Implementations for a given task) with multi-threading option. Memory Stacks have been provided for storing anything that needs to be logged and changes dynamically.
 
-sim = MjSim(Model) # Class in Mujoco_py and a object is created from which we access the different data variables and methods such as the joint positions etc... as required and explained below.
+* **MjSim Class from mujoco_py wraps both the classes mjModel and the mjData** 
+  * **sim** = **MjSim(Model)** # Class in Mujoco_py and a object is created from which we access the different data variables and methods such as the joint positions etc... as required and explained below.
+
 
 
 * **State vector in Mujoco:**
@@ -61,7 +64,7 @@ x = (mjData.time, mjData.qpos, mjData.qvel, mjData.act) (Taken from Official Muj
   * """
 u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official Mujoco Documentation)"""
   * **mjData.ctrl**         - Control Signals gievn to the actuators modeled as a part of the model XML.
-    * Accessed in mj_py as 
+    * Accessed in mj_py as **sim.data.ctrl** Since it wrpas both the classes from mujoco
   * **mjData.qfrc_applied** - Force applied in Joint Space
   * **mjData.xfrc_applied** - Force applied in Cartesian Space
 
