@@ -36,10 +36,10 @@ Words in Quote from the article: https://towardsdatascience.com/reinforcement-le
 ### Mujoco and Mujoco-py Explanation:
 
 
-mjModel: It is a constant and does not change once initialized with a certain Mujoco XML Document.
+mjModel: It is a constant and does not change once initialized with a certain Mujoco XML Document. Memory allocation is done only while initializing the model. 
 
 mjData: A scratchpad that can be used to write inputs and extract outputs, works with dynamically varying variables and all the functions are implemented using this. 
-So a singke model can be initialized once (with mjModel) and can be used concurrently with many user implementations(mjData// for example, different RL Implementations for a given task) with multi-threading option.
+So a single model can be initialized once (with mjModel) and can be used concurrently with many user implementations(mjData// for example, different RL Implementations for a given task) with multi-threading option. Memory Stacks have been provided for storing anything that needs to be logged and changes dynamically.
 
 
 Acccording to mujoco_py wrappers, we have several object types(these are present in Mujoco:
