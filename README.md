@@ -89,6 +89,15 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
 * **sim.data.ctrl** -- number of actuators defined in the xml model 
 * **model.body_id2name** or **sim.model.body_id2name** -- this along with the next one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
 * **model.joint_id2name** or **sim.model.joint_id2name** --  this along with the previous one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
+* **model.jnt_range** or **sim.model.jnt_range** -- Joint Limit can be known with the joint index 
+* **model.actuator_id2name** or **sim.model.actuator_id2name**
+* **model.camera_id2name** or **sim.model.camera_id2name**
+* **model.jnt_qposadr**
+* **model.stat.extent**
+* **model.vis.map.znear**
+* **model.vis.map.zfar**
+* **model.cam_mat0**
+* **model.cam_pos0**
 * **sim.model.body_name2id** -- name to index of the body 
 
 * **sim.model.geom_name2id**
