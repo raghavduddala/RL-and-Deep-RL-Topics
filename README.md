@@ -87,8 +87,8 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
 * **model.nbody** or **sim.model.nbody** -- number of bodies defined in the xml model 
 * **model.njint** or **sim.model.njnt** -- number of joint defined in the xml model
 * **sim.data.ctrl** -- number of actuators defined in the xml model 
-* **model.body_id2name** **sim.model.body_id2name** -- this along with the next one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
-* **model.joint_id2name** or sim.model.joint_id2name --  this along with the previous one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
+* **model.body_id2name** or **sim.model.body_id2name** -- this along with the next one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
+* **model.joint_id2name** or **sim.model.joint_id2name** --  this along with the previous one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
 * **sim.model.body_name2id** -- name to index of the body 
 
 * **sim.model.geom_name2id**
