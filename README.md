@@ -46,7 +46,7 @@ So a single model can be initialized once (with mjModel) and can be used concurr
 
 * **MjSim Class from mujoco_py wraps both the classes mjModel and the mjData** 
   * **sim** = **MjSim(Model)** # Class in Mujoco_py and a object is created from which we access the different data variables and methods such as the joint positions etc... as required and explained below.
-
+  * **sim.step** and **sim.forward** -- one of the main differences in both the functions is that the **step** advances the simulation by a defined timesetup and **forward** can be used to reset. 
 
 
 * **State vector in Mujoco:**
@@ -91,10 +91,11 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
 * **model.joint_id2name** or **sim.model.joint_id2name** (method) --  this along with the previous one is one of the most useful command for getting the body and joint names with the indices defined as per the xml model 
 * **model.jnt_range** or **sim.model.jnt_range** -- It is a dictionary/list
  * -- Joint Limit can be known with the joint index 
-
-
-
 * **model.actuator_id2name** or **sim.model.actuator_id2name**
+
+* **model.actuator_trnid** or **sim.model.actuator_trnid** - Transmission Id: it gies the ID of the joint, tendon or site that is being manipulated by the actuators defined in a serial order of the actuators. 
+
+
 * **model.camera_id2name** or **sim.model.camera_id2name**
 * **model.jnt_qposadr**
 * **model.stat.extent**
@@ -107,5 +108,14 @@ u = (mjData.ctrl, mjData.qfrc_applied, mjData.xfrc_applied) (aken from Official 
 * **sim.model.geom_name2id**
 * **model.ncam** or **self.model.ncam**
 
-* **sim.data.get_joint_qpos** 
+* **sim.data.get_joint_qpos** - 
+* **sim.model.body_mocapid** - 
+
+* **sim.model.nmocaps** - Gives us the number of mocaps defined in the xml model, (generally used for creating a soft-equality weld constraint in mujoco, by people at Open AI gym to solve for the inverse dynamics using the constraint optimization solver in mujoco. 
+* **sim.model.mocap_pos** - 
+* **sim.model.mocap_quat** - 
+* **sim.model.eq_data** - ((eq) used as a prefix for anything to deal with constarints)-- Numeric data for Constraints , have to see what this means
+* **sim.model.eq_type** - Constraint Type
+* **sim.model.eq_obj1id** - Object Id of Object 1 mentioned in constraint
+* **sim.model.eq_obj2id** - Object Id of Object 2 mentioned in constraint
 
